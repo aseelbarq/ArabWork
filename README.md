@@ -24,7 +24,7 @@ npm run build --report
 npm cache clean --force
 ```
 
-< Then run
+> Then run
 
 ``` bash
 rm -rf node_modules

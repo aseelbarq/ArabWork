@@ -6,11 +6,12 @@
       style="width: 100%; height: 500px;"
     >
       <GmapMarker
-        v-for="marker in markers"
-        :key="marker.id"
+      v-for="(marker,index) in markers"
+        :key="marker.index"
         :position="marker.position"
         :clickable="true"
-        @click="centerMap(marker)"
+        @click="handleMarker(marker)"
+        :label="marker.label"
       />
     </GmapMap>
   </div>
@@ -22,7 +23,16 @@ export default {
     markers: Array,
     mapCenter: Object,
     mapZoom: Number,
-    centerMap: Function
+  },
+  data() {
+    return {
+      selectedMarkerId: null
+    };
+  },
+  methods: {
+    handleMarker(marker) {
+      this.$emit('markerOnClicked', marker);
+    }
   }
 }
 </script>
